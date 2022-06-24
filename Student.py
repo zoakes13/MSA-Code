@@ -9,11 +9,11 @@
 #Create get/set methods where appropriate
 
 class Student:
-    def __init__(self, first_name, last_name, major, class_level, gpa, id_number):
+    def __init__(self, first_name, last_name, major, credit_hours, gpa, id_number):
         self.__first_name = first_name
         self.__last_name = last_name
         self.__major = major
-        self.__class_level = class_level
+        self.__credit_hours = credit_hours
         self.__gpa = gpa
         self.__id_number = id_number
 
@@ -26,8 +26,8 @@ class Student:
     def get_major(self):
         return self.__major
 
-    def get_class_level(self):
-        return self.__class_level
+    def get_credit_hours(self):
+        return self.__credit_hours
 
     def get_gpa(self):
         return self.__gpa
@@ -35,6 +35,17 @@ class Student:
     def get_id_number(self):
         return self.__id_number
 
+    def get_class_level(self):
+        if int(self.__credit_hours) > 90:
+            class_level = "senior"
+        elif int(self.__credit_hours) > 60:
+            class_level = "junior"
+        elif int(self.__credit_hours) > 30:
+            class_level = "sophmore"
+        else:
+            class_level = "freshman"
+        return class_level
+        
     
     
     def set_first_name(self, first_name):
@@ -46,15 +57,11 @@ class Student:
     def set_major(self, major):
         self.__major = major
 
-    def set_class_level(self, class_level):
-        self.__class_level = class_level
+    def set_credit_hours(self, new_credits):
+        self.__credit_hours = new_credits
 
     def set_gpa(self, gpa):
         self.__gpa = gpa
 
-student1 = Student("Kyle", "Roberts", "Explosives 101", "Sophmore", 3.8, 123456789)
-print(student1.get_first_name())
-print(student1.get_last_name())
-print(student1.get_id_number())
-student1.set_class_level("Junior")
-print(student1.get_class_level())
+    def update_credit_hours(self, new_credits):
+        self.__credit_hours += new_credits
