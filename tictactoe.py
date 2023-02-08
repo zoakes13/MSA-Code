@@ -21,52 +21,28 @@ def choosemode():
         else:
             return choice
 
-def two(lane, s1, s2, s3, tac):
+def two(lane):
     if lane.count(" ") == 1:
         if lane.count("O") == 2:
             space = lane.index(" ")
             if space == 0:
-                return s1
+                return 1
             if space == 1:
-                return s2
+                return 2
             if space == 2:
-                return s3
+                return 3
         if lane.count("X") == 2:
-            if tac == False:
-                rtac = []
                 space = lane.index(" ")
                 if space == 0:
-                    return rtac.append(s1)
+                    return 1
                 if space == 1:
-                    return rtac.append(s2)
+                    return 2
                 if space == 2:
-                    return rtac.append(s3)
-            try:
-                #Checks if tac is a list of X blocks
-                tac.reverse()
+                    return 3
             
-            except:
-                return tac
-            
-            else:
-                space = lane.index(" ")
-                if space == 0:
-                    tac = tac.append(s1)
-                    return tac
-                if space == 1:
-                    tac = tac.append(s2)
-                    return tac
-                if space == 2:
-                    tac = tac.append(s3)
-                    return tac
-
         else:
-            if tac == False:
-                return False
-
-    else:
-        if tac == False:
             return False
+
 
 
 while True:
@@ -84,7 +60,7 @@ while True:
 
     #Bot
     if choice == 1:
-        dif = input("Would you liek to play on\n1. Easy\n2. Hard\n")
+        dif = input("Would you like to play on\n1. Easy\n2. Hard\n")
         if dif == "1":
             win = False
             count = 1
@@ -230,7 +206,7 @@ while True:
                     print(f"Player {turn} won!")
                     time.sleep(1)
                 count += 1
-            
+          #HARD  
         if dif == "2":
             win = False
             count = 1
@@ -254,15 +230,36 @@ while True:
                     if turn == 2:
                         tac = False
                         if count > 2:
-                            if A1 == A2 or A1 == A3 or A2 == A3:
+                            if A1 == A2 or A1 == A3 or A2 == A3 and tac == False:
                                 lane = f"{A1}{A2}{A3}"
-                                tac = two(lane, "A1", "A2", "A3", tac)
-                            if B1 == B2 or B1 == B3 or B2 == B3:
+                                cho = two(lane)
+                                if cho != False:
+                                    if cho == 1:
+                                      tac = "A1"
+                                    if cho == 2:
+                                      tac = "A2"
+                                    if cho == 3:
+                                      tac = "A3"
+                            if B1 == B2 or B1 == B3 or B2 == B3 and tac == False:
                                 lane = f"{B1}{B2}{B3}"
-                                tac = two(lane, "B1", "B2", "B3", tac) 
-                            if C1 == C2 or C1 == C3 or C2 == C3:
+                                cho = two(lane)
+                                if cho != False:
+                                  if cho == 1:
+                                    tac = "B1"
+                                  if cho == 2:
+                                    tac = "B2"
+                                  if cho == 3:
+                                    tac = "B3"
+                            if C1 == C2 or C1 == C3 or C2 == C3 and tac == False:
                                 lane = f"{C1}{C2}{C3}"
-                                tac = two(lane, "C1", "C2", "C3", tac)          
+                                cho = two(lane)   
+                                if cho != False:
+                                    if cho == 1:
+                                      tac = "C1"
+                                    if cho == 2:
+                                      tac = "C2"
+                                    if cho == 3:
+                                      tac = "C3"
                         
                         try:
                             tac = tac[0]
