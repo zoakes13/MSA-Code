@@ -23,14 +23,6 @@ def choosemode():
 
 def two(lane):
     if lane.count(" ") == 1:
-        if lane.count("O") == 2:
-            space = lane.index(" ")
-            if space == 0:
-                return 1
-            if space == 1:
-                return 2
-            if space == 2:
-                return 3
         if lane.count("X") == 2:
                 space = lane.index(" ")
                 if space == 0:
@@ -39,6 +31,14 @@ def two(lane):
                     return 2
                 if space == 2:
                     return 3
+        if lane.count("O") == 2:
+            space = lane.index(" ")
+            if space == 0:
+                return 1
+            if space == 1:
+                return 2
+            if space == 2:
+                return 3
             
         else:
             return False
@@ -230,42 +230,94 @@ while True:
                     if turn == 2:
                         tac = False
                         if count > 2:
-                            if A1 == A2 or A1 == A3 or A2 == A3 and tac == False:
-                                lane = f"{A1}{A2}{A3}"
-                                cho = two(lane)
-                                if cho != False:
-                                    if cho == 1:
-                                      tac = "A1"
-                                    if cho == 2:
-                                      tac = "A2"
-                                    if cho == 3:
-                                      tac = "A3"
-                            if B1 == B2 or B1 == B3 or B2 == B3 and tac == False:
-                                lane = f"{B1}{B2}{B3}"
-                                cho = two(lane)
-                                if cho != False:
-                                  if cho == 1:
-                                    tac = "B1"
-                                  if cho == 2:
-                                    tac = "B2"
-                                  if cho == 3:
-                                    tac = "B3"
-                            if C1 == C2 or C1 == C3 or C2 == C3 and tac == False:
-                                lane = f"{C1}{C2}{C3}"
-                                cho = two(lane)   
-                                if cho != False:
-                                    if cho == 1:
-                                      tac = "C1"
-                                    if cho == 2:
-                                      tac = "C2"
-                                    if cho == 3:
-                                      tac = "C3"
-                        
-                        try:
-                            tac = tac[0]
-                        
-                        except:
-                            tac = tac
+                            if tac == False:
+                                if A1 == A2 or A1 == A3 or A2 == A3:
+                                    lane = f"{A1}{A2}{A3}"
+                                    cho = two(lane)
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "A1"
+                                        if cho == 2:
+                                            tac = "A2"
+                                        if cho == 3:
+                                            tac = "A3"
+                            if tac == False:
+                                if B1 == B2 or B1 == B3 or B2 == B3:
+                                    lane = f"{B1}{B2}{B3}"
+                                    cho = two(lane)
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "B1"
+                                        if cho == 2:
+                                            tac = "B2"
+                                        if cho == 3:
+                                            tac = "B3"
+                            if tac == False:
+                                if C1 == C2 or C1 == C3 or C2 == C3:
+                                    lane = f"{C1}{C2}{C3}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "C1"
+                                        if cho == 2:
+                                            tac = "C2"
+                                        if cho == 3:
+                                            tac = "C3"
+                            if tac == False:
+                                if A1 == B1 or A1 == C1 or B1 == C1:
+                                    lane = f"{A1}{B1}{C1}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "A1"
+                                        if cho == 2:
+                                            tac = "B1"
+                                        if cho == 3:
+                                            tac = "C1"
+                            if tac == False:
+                                if A2 == B2 or A2 == C2 or B2 == C2:
+                                    lane = f"{A2}{B2}{C2}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "A2"
+                                        if cho == 2:
+                                            tac = "B2"
+                                        if cho == 3:
+                                            tac = "C2"
+                            if tac == False:
+                                if A3 == B3 or A3 == C3 or B3 == C3:
+                                    lane = f"{A3}{B3}{C3}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "A3"
+                                        if cho == 2:
+                                            tac = "B3"
+                                        if cho == 3:
+                                            tac = "C3"
+                            if tac == False:
+                                if A1 == B2 or A1 == C3 or B2 == C3:
+                                    lane = f"{A1}{B2}{C3}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "A1"
+                                        if cho == 2:
+                                            tac = "B2"
+                                        if cho == 3:
+                                            tac = "C3"
+                            if tac == False:
+                                if C1 == B2 or C1 == A3 or B2 == A3:
+                                    lane = f"{C1}{B2}{A3}"
+                                    cho = two(lane)   
+                                    if cho != False:
+                                        if cho == 1:
+                                            tac = "C1"
+                                        if cho == 2:
+                                            tac = "B2"
+                                        if cho == 3:
+                                            tac = "A3"
                         
                         
                         if tac == False:
